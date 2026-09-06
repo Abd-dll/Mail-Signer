@@ -1,0 +1,304 @@
+/* ============================================================
+   sidebar.css — Styles du sidebar Mail Signer injecté dans Gmail
+   ============================================================ */
+
+/* ─── Sidebar principal ─────────────────────────────────────────────────────── */
+#mailsigner-sidebar {
+  position: fixed;
+  top: 0;
+  right: -360px;
+  width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Google Sans', Arial, sans-serif;
+  font-size: 13px;
+  color: #202124;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid #e0e0e0;
+}
+
+#mailsigner-sidebar.open {
+  right: 0;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+#mailsigner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  background: #4285f4;
+  color: white;
+  flex-shrink: 0;
+}
+
+#mailsigner-title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+#mailsigner-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+#mailsigner-close:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ─── Contenu ───────────────────────────────────────────────────────────────── */
+#mailsigner-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ─── Champs ────────────────────────────────────────────────────────────────── */
+.ms-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ms-field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #5f6368;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ms-field input,
+.ms-field textarea {
+  padding: 8px 10px;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #202124;
+  background: #f8f9fa;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+  resize: vertical;
+}
+
+.ms-field input:focus,
+.ms-field textarea:focus {
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66,133,244,0.15);
+  background: #fff;
+}
+
+.ms-field input[readonly] {
+  background: #f1f3f4;
+  color: #5f6368;
+  cursor: default;
+}
+
+.ms-field textarea {
+  min-height: 90px;
+}
+
+/* ─── Boutons ───────────────────────────────────────────────────────────────── */
+.ms-btn {
+  padding: 10px 16px;
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+  letter-spacing: 0.2px;
+}
+
+.ms-btn:hover:not(:disabled) {
+  background: #3367d6;
+  box-shadow: 0 2px 8px rgba(66,133,244,0.35);
+}
+
+.ms-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.ms-btn:disabled {
+  background: #dadce0;
+  color: #9aa0a6;
+  cursor: not-allowed;
+}
+
+.ms-btn-green {
+  background: #34a853;
+}
+
+.ms-btn-green:hover:not(:disabled) {
+  background: #2d9249;
+}
+
+/* ─── Statuts ───────────────────────────────────────────────────────────────── */
+.ms-status {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.ms-ok, .ms-status.ms-ok {
+  background: #e6f4ea;
+  color: #1e7e34;
+  border-left: 3px solid #34a853;
+}
+
+.ms-error, .ms-status.ms-error {
+  background: #fce8e6;
+  color: #c5221f;
+  border-left: 3px solid #ea4335;
+}
+
+.ms-info, .ms-status.ms-info {
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-left: 3px solid #4285f4;
+}
+
+.ms-warning, .ms-status.ms-warning {
+  background: #fef7e0;
+  color: #b06000;
+  border-left: 3px solid #fbbc04;
+}
+
+/* ─── Résultat signature ────────────────────────────────────────────────────── */
+.ms-result-box {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ─── Infos signature (vérification) ────────────────────────────────────────── */
+.ms-sig-info {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ms-sig-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.ms-sig-row span {
+  color: #5f6368;
+}
+
+.ms-sig-row b {
+  color: #202124;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 11px;
+}
+
+/* ─── Banner résultat vérification ──────────────────────────────────────────── */
+.ms-banner {
+  padding: 20px 16px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.ms-banner small {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.ms-banner-valid {
+  background: #e6f4ea;
+  color: #1e7e34;
+  border: 2px solid #34a853;
+}
+
+.ms-banner-invalid {
+  background: #fce8e6;
+  color: #c5221f;
+  border: 2px solid #ea4335;
+}
+
+/* ─── Bouton "Signer" injecté dans la toolbar Gmail ─────────────────────────── */
+.ms-sign-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  margin-left: 6px;
+  background: #e8f0fe;
+  border: 1px solid #c5d8f6;
+  transition: background 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+  vertical-align: middle;
+  gap: 4px;
+}
+
+.ms-sign-btn:hover {
+  background: #d2e3fc;
+  box-shadow: 0 1px 4px rgba(66,133,244,0.25);
+}
+
+.ms-sign-btn:active {
+  background: #c5d8f6;
+}
+
+/* ─── Bouton "Vérifier" injecté dans le mail reçu ───────────────────────────── */
+.ms-verify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 7px 14px;
+  background: #e8f0fe;
+  color: #1a73e8;
+  border: 1px solid #4285f4;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Google Sans', Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.ms-verify-btn:hover {
+  background: #d2e3fc;
+  box-shadow: 0 1px 4px rgba(66,133,244,0.25);
+}

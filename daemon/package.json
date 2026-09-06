@@ -1,0 +1,16 @@
+{
+  "name": "projete4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crypto.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@noble/post-quantum": "^0.6.1",
+    "express": "^5.2.1"
+  }
+}

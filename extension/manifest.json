@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Mail Signer",
+  "version": "1.0",
+  "description": "Signature cryptographique d'e-mails via service local",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Paramètres Mail Signer"
+  },
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "alarms"
+  ],
+
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "http://localhost:3000/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"],
+      "css": ["sidebar.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["sidebar.html"],
+      "matches": ["https://mail.google.com/*"]
+    }
+  ]
+}

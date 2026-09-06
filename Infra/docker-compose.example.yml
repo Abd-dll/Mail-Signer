@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: nextcloud
+      POSTGRES_USER: nextcloud_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme_in_production}
+
+  redis:
+    image: redis:alpine
+    restart: always
+
+  app:
+    image: nextcloud:fpm-alpine
+    restart: always
+    depends_on:
+      - db
+      - redis
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_DB: nextcloud
+      POSTGRES_USER: nextcloud_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme_in_production}
+      REDIS_HOST: redis
+    volumes:
+      - nextcloud_main:/var/www/html
+      - nextcloud_data:/var/www/html/data
+
+volumes:
+  db_data:
+  nextcloud_main:
+  nextcloud_data:
